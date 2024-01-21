@@ -143,7 +143,7 @@ def make_dataset(train_json, val_json, test_json):
     
 
 # spilt train.json, val.json, test.json
-train_json, val_json, test_json = split_train_val_test("/home/linhaojia/liutao/train_reward/json/S2C_114959.json")
+train_json, val_json, test_json = split_train_val_test("/data/liutao/mac8/json/S2C_114959.json")
 
 # make data
 make_dataset(train_json, val_json, test_json)
