@@ -1,0 +1,40 @@
+
+# basic settings
+fix_base: False
+fix_rate: 0
+
+# training settings
+seed: 42
+lr: 5e-6
+accumulation_steps: 1
+epochs: 10
+adam-beta1: 0.9
+adam-beta2: 0.999
+adam-eps: 1e-8
+lr-decay-iters:
+
+
+distributed: True
+batch_size: 4
+train_json_path: /home/linhaojia/liutao/train_reward/json/train_91967.json
+val_json_path: /home/linhaojia/liutao/train_reward/json/val_11496.json
+test_json_path: /home/linhaojia/liutao/train_reward/json/test_11496.json
+# log_path: 
+
+BLIP:
+  image_size: 224
+  vit: 'large'
+  pretrained_model_path: /media/sdb/liutao/checkpoint/blip/model_large.pth
+
+
+Reward:
+  mlp_dim: 768
+
+
+
+
+
+
+ 
+
+  
