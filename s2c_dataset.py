@@ -92,7 +92,7 @@ class S2C_Dataset(Dataset):
         return self.data[index]
 
     def store_dataset(self, dataset):
-        makedir('./fixed_data')
+        makedir('/data/liutao/mac8/fixed_data')
         torch.save(self.data, os.path.join('/data/liutao/mac8/fixed_data', f"{dataset}.pth"))
         
     def make_data(self):
@@ -131,7 +131,7 @@ def make_dataset(train_json, val_json, test_json):
     print("train_data make finished!")
 
     val_dataset = S2C_Dataset(val_json, mode='make')
-    val_dataset.store_dataset('val')
+    val_dataset.store_dataset('valid')
     print("val_data make finished!")
 
     test_dataset = S2C_Dataset(test_json, mode='make')
@@ -142,11 +142,11 @@ def make_dataset(train_json, val_json, test_json):
     
     
 
-# spilt train.json, val.json, test.json
-train_json, val_json, test_json = split_train_val_test("/data/liutao/mac8/json/S2C_114959.json")
+# # spilt train.json, val.json, test.json
+# train_json, val_json, test_json = split_train_val_test("/data/liutao/mac8/json/S2C_114959.json")
 
-# make data
-make_dataset(train_json, val_json, test_json)
+# # make data
+# make_dataset(train_json, val_json, test_json)
 
 
 

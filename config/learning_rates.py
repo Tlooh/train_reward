@@ -20,7 +20,7 @@ def get_learning_rate_scheduler(optimizer, args):
     if args.lr_decay_iters is not None:
         num_iters = args.lr_decay_iters
     else:
-        num_iters = args.train_iters // args.accumulation_steps
+        num_iters = args.train_iters // args.gradient_accumulation_steps
     
     num_iters = max(1, num_iters)
     init_step = -1

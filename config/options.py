@@ -12,9 +12,9 @@ parser.add_argument('--seed', default=42, type=int)
 
 # training settings
 parser.add_argument('--batch_size', type=int, default=256, help='')
-parser.add_argument('--accumulation_steps', type=int, default=1, help='')
+parser.add_argument('--gradient_accumulation_steps', type=int, default=1, help='')
 parser.add_argument('--epochs', type=int, default=10, help='')
-parser.add_argument('--train-iters', type=int, default=None,
+parser.add_argument('--train_iters', type=int, default=10,
                     help='total number of iterations to train over all training runs')
 
 # device settings
@@ -30,7 +30,7 @@ parser.add_argument("--fix_base", dest='fix_base', action='store_true')
 
 
 # param loose/fix settings
-parser.add_argument("--fix_rate", type=float, default=0)
+parser.add_argument("--fix_rate", type=float, default=0.7)
 
 
 # Learning rate scheduling.
@@ -53,8 +53,8 @@ parser.add_argument('--adam-eps', type=float, default=1e-8)
 
 # save options
 parser.add_argument('--clear_visualizer', dest='clear_visualizer', action='store_true')
-parser.add_argument('--std_log', dest='std_log', action='store_true')
-parser.add_argument('--valid_per_epoch', type=int, default=1)
+parser.add_argument('--output_dir', default="/data/liutao/checkpoints/blipreward")
+parser.add_argument('--valid_per_epoch', type=int, default=10)
 
 
 # test settings

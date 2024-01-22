@@ -24,7 +24,7 @@ test_json_path: /home/linhaojia/liutao/train_reward/json/test_11496.json
 BLIP:
   image_size: 224
   vit: 'large'
-  pretrained_model_path: /media/sdb/liutao/checkpoint/blip/model_large.pth
+  pretrained_model_path: /data/liutao/mac8/blip/model_large.pth
 
 
 Reward:

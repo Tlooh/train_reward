@@ -17,7 +17,7 @@ from blip.blip import create_vit, init_tokenizer, load_checkpoint
 
 class BLIP_Pretrain(nn.Module):
     def __init__(self,                 
-                 med_config = 'configs/bert_config.json',  
+                 med_config = '/home/linhaojia/liutao/train_reward/config/bert_config.json',  
                  image_size = 224,
                  vit = 'base',
                  vit_grad_ckpt = False,
@@ -52,7 +52,7 @@ class BLIP_Pretrain(nn.Module):
 def blip_pretrain(pretrained='', **kwargs):
     model = BLIP_Pretrain(**kwargs)
     if pretrained and get_rank() == 0:
-        model, msg = load_checkpoint(model,pretrained)
+        model, msg = load_checkpoint(model, pretrained)
         print("missing keys:")
         print(msg.missing_keys)
     return model 

@@ -64,7 +64,7 @@ class BlipReward(nn.Module):
         self.preprocess = image_transform(image_size=config.BLIP.image_size)
         self.mlp = MLP(config.Reward.mlp_dim)
 
-        if config.Options.fix_base:
+        if args.fix_base:
             self.blip.requires_grad_(False)
         
         for name, parms in self.blip.named_parameters():
@@ -73,9 +73,9 @@ class BlipReward(nn.Module):
         
         # fix certain ratio of layers
         self.image_layer_num = 24 if config.BLIP.vit == 'large' else 12
-        if config.Options.fix_rate > 0:
-            text_fix_num = "layer.{}".format(int(12 * config.Options.fix_rate))
-            image_fix_num = "blocks.{}".format(int(self.image_layer_num * config.Options.fix_rate))
+        if args.fix_rate > 0:
+            text_fix_num = "layer.{}".format(int(12 * args.fix_rate))
+            image_fix_num = "blocks.{}".format(int(self.image_layer_num * args.fix_rate))
         
         for name, parms in self.blip.text_encoder.named_parameters():
                 parms.requires_grad_(False)
@@ -103,10 +103,20 @@ class BlipReward(nn.Module):
     def forward(self, batch_data):
         # encode data
         batch_data = self.encode_pair(batch_data)
+        # forward
+        emb_better, emb_worse = batch_data['emb_better'], batch_data['emb_worse']
+
+        reward_better = self.mlp(emb_better)
+        reward_worse = self.mlp(emb_worse)
+        print(reward_better)
+        reward = torch.concat((reward_better, reward_worse), dim=1)
+
+        return reward
+
 
 
     def encode_pair(self, batch_data):
-        text_ids, text_mask, img_better, img_worse = batch_data['text_ids'], batch_data['text_mask'], batch_data['img_better'], batch_data['img_worse']
+        text_ids, text_mask, img_better, img_worse = batch_data['text_ids'], batch_data['text_mask'], batch_data['image_better'], batch_data['image_worse']
         text_ids = text_ids.view(text_ids.shape[0], -1).to(self.device) # [batch_size, seq_len]
         text_mask = text_mask.view(text_mask.shape[0], -1).to(self.device) # [batch_size, seq_len]
         img_better = img_better.to(self.device) # [batch_size, C, H, W]
