@@ -72,55 +72,45 @@ def split_train_val_test(json_file, ratios = [0.8, 0.1, 0.1], random_state=42):
 
 
 class S2C_Dataset(Dataset):
-    def __init__(self, data_path, image_size = 224, mode = 'make'):
+    def __init__(self, data_path, image_size = 224):
         self.tokenizer = init_tokenizer()
         self.preprocess = image_transform(image_size)
 
-        if mode == 'make':
-            # load json
-            with open(data_path, "r") as f:
-                self.data = json.load(f)
-            self.data = self.make_data()
-        else: # mode: load
-            # load pth
-            self.data = torch.load(data_path)
+        # load json
+        with open(data_path, "r") as f:
+            self.data = json.load(f)
+        
 
     def __len__(self):
         return len(self.data)
     
     def __getitem__(self, index):
-        return self.data[index]
+        # dict_item: img_worse, img_better, text_ids, text_mask
+        dict_item = self.handle_data(self.data[index])
+        return dict_item
 
     def store_dataset(self, dataset):
         makedir('/data/liutao/mac8/fixed_data')
         torch.save(self.data, os.path.join('/data/liutao/mac8/fixed_data', f"{dataset}.pth"))
         
-    def make_data(self):
-        data_items = []
-        bar = tqdm(range(len(self.data)), desc=f'making dataset: ')
+    def handle_data(self, item):
+        dict_item = {}
+        simple_image_path = item['simple_img']
+        complex_image_path = item['complex_img']
 
-        for item in self.data:
-            dict_item = {}
-            simple_image_path = item['simple_img']
-            complex_image_path = item['complex_img']
+        simple_image = Image.open(simple_image_path)
+        complex_image = Image.open(complex_image_path)
+        simple_image = self.preprocess(simple_image)
+        complex_image = self.preprocess(complex_image)
 
-            simple_image = Image.open(simple_image_path)
-            complex_image = Image.open(complex_image_path)
-            simple_image = self.preprocess(simple_image)
-            complex_image = self.preprocess(complex_image)
+        text_input = self.tokenizer(item['simple'], padding = 'max_length', truncation=True, max_length = 35, return_tensors = "pt")
 
-            text_input = self.tokenizer(item['simple'], padding = 'max_length', truncation=True, max_length = 35, return_tensors = "pt")
-
-            dict_item["image_better"] = complex_image
-            dict_item["image_worse"] = simple_image 
-            dict_item["text_ids"] = text_input.input_ids
-            dict_item["text_mask"] = text_input.attention_mask
-            dict_item['clip_text'] = clip.tokenize(item["simple"], truncate=True)
-
-            data_items.append(dict_item)
-            bar.update(1)
-
-        return data_items
+        dict_item["image_better"] = complex_image
+        dict_item["image_worse"] = simple_image 
+        dict_item["text_ids"] = text_input.input_ids
+        dict_item["text_mask"] = text_input.attention_mask
+            
+        return dict_item
 
 
 

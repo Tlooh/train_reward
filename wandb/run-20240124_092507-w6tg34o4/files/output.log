@@ -1,0 +1,29 @@
+tensor([[1.0744e-10],
+        [2.1134e-10],
+        [3.1120e-10],
+        [1.7921e-10]], device='cuda:0', grad_fn=<AddmmBackward0>)
+tensor([[-8.5264e-11],
+        [ 2.4502e-10],
+        [ 4.6070e-10],
+        [ 2.8083e-10]], device='cuda:0', grad_fn=<AddmmBackward0>)
+tensor([[-2.7911e-10],
+        [ 6.7427e-11],
+        [-1.5280e-10],
+        [ 5.2737e-10]], device='cuda:0', grad_fn=<AddmmBackward0>)
+tensor([[-4.5676e-11],
+        [-1.1730e-10],
+        [-7.4010e-11],
+        [-8.0599e-11]], device='cuda:0', grad_fn=<AddmmBackward0>)
+Iteration 1 | Loss 0.17329 | Acc 0.6250
+tensor([[-5.7679e-10],
+        [-1.3551e-10],
+        [-2.0538e-10],
+        [-2.6199e-10]], device='cuda:0', grad_fn=<AddmmBackward0>)
+tensor([[-1.0541e-10],
+        [-3.6168e-10],
+        [-7.2313e-10],
+        [-4.9197e-10]], device='cuda:0', grad_fn=<AddmmBackward0>)
+Traceback (most recent call last):
+  File "/home/linhaojia/liutao/train_reward/./train.py", line 134, in <module>
+    acc_list.append(acc.item())
+KeyboardInterrupt

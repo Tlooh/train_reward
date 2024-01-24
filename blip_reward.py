@@ -108,7 +108,7 @@ class BlipReward(nn.Module):
 
         reward_better = self.mlp(emb_better)
         reward_worse = self.mlp(emb_worse)
-        print(reward_better)
+        # print(reward_better)
         reward = torch.concat((reward_better, reward_worse), dim=1)
 
         return reward

@@ -8,10 +8,11 @@ parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFo
 # basic settings
 parser.add_argument('--config', type=str, default='config/config.yaml', help='Path to the config file.')
 parser.add_argument('--seed', default=42, type=int)
+parser.add_argument('--savepath', type=str, default=None, help='')
 
 
 # training settings
-parser.add_argument('--batch_size', type=int, default=256, help='')
+parser.add_argument('--batch_size', type=int, default=4, help='')
 parser.add_argument('--gradient_accumulation_steps', type=int, default=1, help='')
 parser.add_argument('--epochs', type=int, default=10, help='')
 parser.add_argument('--train_iters', type=int, default=10,

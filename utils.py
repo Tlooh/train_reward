@@ -1,7 +1,7 @@
 import os, shutil
 import torch
 import torch.distributed as dist
-
+from config.options import *
 
 
 def is_dist_avail_and_initialized():
@@ -17,6 +17,16 @@ def get_rank():
     return dist.get_rank()
 
 
+def make_path():
+    return "{}_bs{}_fix={}_lr={}{}".format(args.savepath, args.BatchSize, args.fix_rate, args.lr, args.lr_decay_style)
+
+
+def save_model(model):
+    save_path = make_path()
+    if not os.path.isdir(os.path.join(args.output_dir, save_path)):
+        os.makedirs(os.path.join(args.output_dir, save_path), exist_ok=True)
+    model_name = os.path.join(args.output_dir, save_path, 'best_lr={}.pt'.format(args.lr))
+    torch.save(model.state_dict(), model_name)
 
 
 """===================== Tools ========================"""
