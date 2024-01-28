@@ -1,0 +1,44 @@
+
+learning rate decaying style cosine, ratio 0.0
+2024-01-26 03:53 | INFO: ===================== Epoch 1 / 5 =====================
+
+  0%|                                                                             | 0/89 [00:00<?, ?it/s]2024-01-26 03:53 | INFO: Step 0 | loss: 0.6931 | acc: 0.5000
+2024-01-26 04:02 | INFO: Valid | avg_loss: nan | avg_acc: 0.0000
+  1%|▋                                                                | 1/89 [08:32<12:31:24, 512.32s/it]2024-01-26 04:02 | INFO: Step 1 | loss: nan | acc: 0.0000
+  2%|█▍                                                                | 2/89 [08:34<5:07:23, 211.99s/it]2024-01-26 04:02 | INFO: Step 3 | loss: nan | acc: 0.0000
+  3%|██▏                                                               | 3/89 [08:35<2:46:07, 115.90s/it]2024-01-26 04:02 | INFO: Step 6 | loss: nan | acc: 0.0000
+  4%|██▉                                                               | 4/89 [08:38<3:03:30, 129.53s/it]
+Traceback (most recent call last):
+  File "/home/linhaojia/liutao/train_reward/train_clip.py", line 308, in <module>
+    main()
+  File "/home/linhaojia/liutao/train_reward/train_clip.py", line 302, in main
+    trainer(args)
+  File "/home/linhaojia/liutao/train_reward/train_clip.py", line 203, in trainer
+    reward = model(batch_data)
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/linhaojia/liutao/train_reward/clip_reward.py", line 53, in forward
+    batch_data = self.encode_pair(batch_data)
+  File "/home/linhaojia/liutao/train_reward/clip_reward.py", line 71, in encode_pair
+    img_worse  = [self.preprocess(Image.open(img)) for img in img_worse ]
+  File "/home/linhaojia/liutao/train_reward/clip_reward.py", line 71, in <listcomp>
+    img_worse  = [self.preprocess(Image.open(img)) for img in img_worse ]
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/torchvision/transforms/transforms.py", line 95, in __call__
+    img = t(img)
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/torchvision/transforms/transforms.py", line 361, in forward
+    return F.resize(img, self.size, self.interpolation, self.max_size, self.antialias)
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/torchvision/transforms/functional.py", line 490, in resize
+    return F_pil.resize(img, size=output_size, interpolation=pil_interpolation)
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/torchvision/transforms/_functional_pil.py", line 250, in resize
+    return img.resize(tuple(size[::-1]), interpolation)
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/PIL/Image.py", line 2164, in resize
+    self.load()
+  File "/home/linhaojia/miniconda3/envs/refl/lib/python3.10/site-packages/PIL/ImageFile.py", line 291, in load
+    n, err_code = decoder.decode(b)
+KeyboardInterrupt

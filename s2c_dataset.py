@@ -129,7 +129,38 @@ def make_dataset(train_json, val_json, test_json):
     print("test_data make finished!")
     
 
+
+class CLIP_Dataset(Dataset):
+    def __init__(self, data_path, image_size = 224):
+        self.preprocess = image_transform(image_size)
+
+        # load json
+        with open(data_path, "r") as f:
+            self.data = json.load(f)
+        
+    def __len__(self):
+        return len(self.data)
     
+    def __getitem__(self, index):
+        # dict_item: img_worse, img_better, text_ids, text_mask
+        dict_item = self.handle_data(self.data[index])
+        return dict_item
+        
+    def handle_data(self, item):
+        dict_item = {}
+        simple_image_path = item['simple_img']
+        complex_image_path = item['complex_img']
+
+        # simple_image = Image.open(simple_image_path)
+        # complex_image = Image.open(complex_image_path)
+        # simple_image = self.preprocess(simple_image)
+        # complex_image = self.preprocess(complex_image)
+
+        dict_item["img_better"] = complex_image_path
+        dict_item["img_worse"] = simple_image_path
+        dict_item["text"] = item['simple']
+
+        return dict_item
     
 
 # # spilt train.json, val.json, test.json

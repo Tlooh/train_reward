@@ -13,7 +13,7 @@ train_options=" \
        --gpu_num ${NUM_GPUS_PER_WORKER} \
        --gpu_id '2,3,4,5' \
        --clear_visualizer \
-       --fix_rate 0.7 \
+       --fix_rate 0.5 \
        --lr 1e-05 \
        --lr-decay-style cosine \
        --warmup 0.0 \

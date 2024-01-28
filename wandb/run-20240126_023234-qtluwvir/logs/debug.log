@@ -1,0 +1,27 @@
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_setup.py:_flush():76] Current SDK version is 0.16.2
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_setup.py:_flush():76] Configure stats pid to 886731
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_setup.py:_flush():76] Loading settings from /home/linhaojia/.config/wandb/settings
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_setup.py:_flush():76] Loading settings from /home/linhaojia/liutao/train_reward/wandb/settings
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'train_clip.py', 'program_abspath': '/home/linhaojia/liutao/train_reward/train_clip.py', 'program': '/home/linhaojia/liutao/train_reward/train_clip.py'}
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_init.py:_log_setup():526] Logging user logs to /home/linhaojia/liutao/train_reward/wandb/run-20240126_023234-qtluwvir/logs/debug.log
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_init.py:_log_setup():527] Logging internal logs to /home/linhaojia/liutao/train_reward/wandb/run-20240126_023234-qtluwvir/logs/debug-internal.log
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_init.py:init():566] calling init triggers
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_init.py:init():573] wandb.init called with sweep_config: {}
+config: {'num_epochs': 5, 'batch_size': 32, 'seed': 42, 'save_dir': '/data/liutao/checkpoints/ClipReward', 'CLIP_NAME': 'ViT-L/14', 'gpu_id': 0, 'lr': 0.001, 'warmup': 0.01, 'adam_beta1': 0.9, 'adam_beta2': 0.999, 'adam_eps': 1e-08, 'lr_decay_iters': None, 'lr_decay_style': 'cosine', 'lr_decay_ratio': 0.0, 'valid_per_epoch': 50, 'wandb': True, 'log': <Logger /data/liutao/checkpoints/ClipReward/logs/log_CLIP.log (INFO)>}
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_init.py:init():616] starting backend
+2024-01-26 02:32:34,768 INFO    MainThread:886731 [wandb_init.py:init():620] setting up manager
+2024-01-26 02:32:34,769 INFO    MainThread:886731 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-01-26 02:32:34,770 INFO    MainThread:886731 [wandb_init.py:init():628] backend started and connected
+2024-01-26 02:32:34,771 INFO    MainThread:886731 [wandb_init.py:init():720] updated telemetry
+2024-01-26 02:32:34,774 INFO    MainThread:886731 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-01-26 02:32:35,584 INFO    MainThread:886731 [wandb_run.py:_on_init():2254] communicating current version
+2024-01-26 02:32:36,094 INFO    MainThread:886731 [wandb_run.py:_on_init():2263] got version response 
+2024-01-26 02:32:36,094 INFO    MainThread:886731 [wandb_init.py:init():804] starting run threads in backend
+2024-01-26 02:32:38,217 INFO    MainThread:886731 [wandb_run.py:_console_start():2233] atexit reg
+2024-01-26 02:32:38,218 INFO    MainThread:886731 [wandb_run.py:_redirect():2088] redirect: wrap_raw
+2024-01-26 02:32:38,218 INFO    MainThread:886731 [wandb_run.py:_redirect():2153] Wrapping output streams.
+2024-01-26 02:32:38,218 INFO    MainThread:886731 [wandb_run.py:_redirect():2178] Redirects installed.
+2024-01-26 02:32:38,218 INFO    MainThread:886731 [wandb_init.py:init():847] run started, returning control to user process
+2024-01-26 03:32:03,585 WARNING MsgRouterThr:886731 [router.py:message_loop():77] message_loop has been closed

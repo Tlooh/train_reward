@@ -1,0 +1,86 @@
+wandb_version: 1
+
+num_epochs:
+  desc: null
+  value: 5
+batch_size:
+  desc: null
+  value: 32
+seed:
+  desc: null
+  value: 42
+save_dir:
+  desc: null
+  value: /data/liutao/checkpoints/ClipReward
+CLIP_NAME:
+  desc: null
+  value: ViT-L/14
+gpu_id:
+  desc: null
+  value: 0
+lr:
+  desc: null
+  value: 1.0e-05
+warmup:
+  desc: null
+  value: 0.0
+adam_beta1:
+  desc: null
+  value: 0.9
+adam_beta2:
+  desc: null
+  value: 0.999
+adam_eps:
+  desc: null
+  value: 1.0e-08
+lr_decay_iters:
+  desc: null
+  value: null
+lr_decay_style:
+  desc: null
+  value: cosine
+lr_decay_ratio:
+  desc: null
+  value: 0.0
+valid_per_epoch:
+  desc: null
+  value: 50
+wandb:
+  desc: null
+  value: true
+log:
+  desc: null
+  value: <Logger /data/liutao/checkpoints/ClipReward/logs/log_CLIP.log (INFO)>
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.13
+    cli_version: 0.16.2
+    framework: huggingface
+    huggingface_version: 4.27.4
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1706241196.035148
+    t:
+      1:
+      - 1
+      - 11
+      - 41
+      - 49
+      - 55
+      2:
+      - 1
+      - 11
+      - 41
+      - 49
+      - 55
+      3:
+      - 13
+      - 16
+      - 23
+      4: 3.10.13
+      5: 0.16.2
+      6: 4.27.4
+      8:
+      - 5
+      13: linux-x86_64
